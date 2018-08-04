@@ -1,2 +1,2 @@
 # My_project
-some small project by ranly
+自己训练的LDA在IRIS数据及上的表现并不是很好，希望各位大神指正
