@@ -6,6 +6,9 @@ Created on Fri Aug  3 16:55:13 2018
 """
 import numpy as np
 import math
+from sklearn import datasets, model_selection, naive_bayes
+
+
 def loadData():
     postingList = [['my', 'dog', 'has', 'clever', 'problems', 'help', 'please'],
                    ['silly', 'fucking', 'take', 'him', 'to', 'dog', 'park', 'stupid'],
@@ -71,7 +74,34 @@ def main0():
     testDoc = ['my','silly','dog','is','fucking','clever']
     testDoc0 = to_standardForm(vocaList,testDoc)
     print("%s is %s" %(testDoc,classify(testDoc0,p0,p1,pc)))
-            
-main0()     
+    
+    
+def load_sklearn_dataset(dataname = 'iris'):
+    if dataname == 'iris':
+        data = datasets.load_iris()
+    elif dataname == 'wine':
+        data = datasets.load_wine()
+    elif dataname == 'boston':
+        data = datasets.load_boston()
+    elif dataname  == 'cancer':
+        data = datasets.load_breast_cancer()
+    elif dataname == 'digits':
+        data = datasets.load_digits()
+    else: 
+        pass
+    return model_selection.train_test_split(data.data,data.target,test_size = 0.15,random_state = 0,stratify = data.target)
+
+def main1():
+    train_X,test_X,train_y,test_y = load_sklearn_dataset('boston') 
+    #data = datasets.load_boston()
+    #train_X = data.data
+    #train_y = data.target
+    #print(np.shape(train_y))
+    clf = naive_bayes.GaussianNB(priors = None)
+    clf.partial_fit(train_X,train_y,np.unique(train_y))
+  # pre_y = clf.predict(test_X)
+    print(clf.scores(test_X,test_y))
+main1()     
         
         
+#https://blog.csdn.net/fontthrone/article/details/78824576
