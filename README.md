@@ -8,4 +8,4 @@
 >3.本Github内容不定期更新 ~ =_= ~
 >4.最后附上老婆张片一张！！
 Gakki：
-![Alt text](./QQ图片20180807141617.png)
+![Gakki](https://github.com/4Tupid/My_project/blob/master/face_detect/Gakki.jpg)
